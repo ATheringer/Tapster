@@ -15,7 +15,7 @@ if(!$user) {
 }else if(!$pass) {
 	echo "You must enter a password <br> <a href=\"register.html\">Return</a>";
 } else {
-
+	$pass = hash('md5', $pass);
 	$hostname = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
@@ -34,13 +34,8 @@ if(!$user) {
 
 	while($row = mysql_fetch_array($return)) {
 		$vuser = $row{'name'};
-		$vpass = $row{'password'};
 		if($user == $vuser) { 
 			echo "User already exists! <br> <a href=\"register.html\">Return</a>";
-			$flag = FALSE;
-			break;
-		} elseif($pass == $vpass) { 
-			echo "Pass already taken! <br> <a href=\"register.html\">Return</a>";
 			$flag = FALSE;
 			break;
 		}
@@ -50,7 +45,11 @@ if(!$user) {
 		$command = "insert into ".$table." (".$name.", ".$pw.") values (\"".$user."\", \"".$pass."\")";
 		$reg = mysql_query($command);
 		if($reg) {
-			echo "Registration successful! <br> <a href=\"tapster.html\">Return</a>";
+			$command = "create table ".$user."_lib (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, beer VARCHAR(100))";
+			mysql_query($command);
+			$command = "update ".$table." set library=\"".$user."_lib\" where name=\"".$user."\"";
+			mysql_query($command);
+			echo "Registration successful! <br> <a href=\"login.html\">Login Here</a>";
 		} else {
 			echo "Something went wrong :( <br> <a href=\"register.html\">Try Again</a>";
 		}

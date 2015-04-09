@@ -50,7 +50,6 @@
 				echo "Hello, ";
 				if($_COOKIE['user']!="") {
 					echo $_COOKIE['user'].". <a href=\"logout.php\">Logout</a>";
-					echo "<a href=\"lib.php\"><p>Your Library</p></a>";
 				} else {
 					echo "Guest. ";
 					echo "<a href=\"login.html\">Login Here!</a>";
@@ -65,17 +64,28 @@
 			<br></br>
 			<div id="php_and_json">
 				<?php 
-				$rawterms = htmlspecialchars($_GET['beer']);
-				$terms = str_replace(" ", "%20", $rawterms);
-				echo 'You searched: '.$rawterms;
-				echo '<p>Results: </p>';
-				$url = "http://api.openbeerdatabase.com/v1/beers.json?query=".$terms;
-				$json = file_get_contents($url);
-				$data = json_decode($json, TRUE);
-				foreach($data['beers'] as $item) {
-					echo '<a href="beer.php?v=' . $item['name'] . '" name="v">' . $item['name'] . '</a>';
-					echo '<br></br>';
+				$hostname = 'localhost';
+				$dbuser = 'root';
+				$dbpass = '';
+				$db = 'tapster';
+				if($_COOKIE['user']=="") {
+					echo "It looks like you're not logged in. <a href=\"login.php\">Login.</a>";
+				} else {
+					$table = $_COOKIE['user']."_lib";
+					$dbhandle = MYSQL_CONNECT($hostname, $dbuser, $dbpass)or die("Unable to connect to mysql");
+					$selected = mysql_select_db($db, $dbhandle)or die("Unable to connect to database");
+	
+					$query = "select * from ".$table;
+					$return = mysql_query($query);
+
+					echo "<p>Your library: </p>";	
+					
+					while($row = mysql_fetch_array($return)) {
+						echo '<a href="beer.php?v=' . $row{'beer'} . '" name="v">' . $row{'beer'} . '</a>';
+						echo '<br></br>';
+					}
 				}
+				mysql_close($dbhandle);	
 				?>
 			<br></br>
 			</div>

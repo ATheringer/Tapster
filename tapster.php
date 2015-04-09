@@ -48,7 +48,7 @@
 				<img src="beerpics/tapsterLogo.png" alt="Tapster Logo"/>
 			</div>
 			<div class="floatCenter">
-				<h1><a href="tapster.html" style="TEXT-DECORATION: NONE">Tapster</a></h1>
+				<h1><a href="tapster.php" style="TEXT-DECORATION: NONE">Tapster</a></h1>
 				<h2>Beer Library and Search</h2>
 			</div>
 			<br></br>
@@ -59,8 +59,18 @@
 				</form>
 			</div>
 			<div class="floatRight">
-				<a href="login.html"><p>Login</p></a>
-				<a href="register.html"><p>Sign Up!</p></a>
+				<?php 
+				echo "<br>";
+				echo "Hello, ";
+				if($_COOKIE['user']!="") {
+					echo $_COOKIE['user'].". <a href=\"logout.php\">Logout</a>";
+					echo "<a href=\"lib.php\"><p>Your Library</p></a>";
+				} else {
+					echo "Guest. ";
+					echo "<a href=\"login.html\">Login Here!</a>";
+					echo "<p align=\"right\"><a href=\"register.html\">Sign Up!</a></p>";
+				}
+				?>
 			</div>
 			<div id="content">
 			<div class="divider"></div>

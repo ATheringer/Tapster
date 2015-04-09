@@ -15,7 +15,7 @@ if(!$user) {
 }else if(!$pass) {
 	echo "You must enter a password <br> <a href=\"login.html\">Return</a>";
 } else {
-
+	$pass = hash('md5', $pass);
 	$hostname = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
@@ -33,13 +33,17 @@ if(!$user) {
 	$row = mysql_fetch_array($return);
 	$vuser = $row{'name'};
 	$vpass = $row{'password'};
+	
 
 	if(!($user == $vuser)) { 
 		echo "User not found! (login is case sensitive) <br> <a href=\"login.html\">Return</a>";
 	} elseif(!($pass == $vpass)) { 
 		echo "Invalid password! (login is case sensitive) <br> <a href=\"login.html\">Return</a>";
 	} else {
-		echo "Welcome, ".$user."!<br> <a href=\"tapster.html\">Return</a>";
+		echo "Welcome, ".$user."!<br> <a href=\"tapster.php\">Return</a>";
+		$cook = hash('md5', $pass);
+		setcookie("user", $user);
+		setcookie("hval", $cook);
 	}
 	
 }

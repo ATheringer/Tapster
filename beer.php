@@ -45,9 +45,21 @@
 		<div id="container">
 			<div class="floatRight">
 				<img src="beerpics/tapsterLogo.png" alt="Tapster Logo"/>
+				<?php 
+				echo "<br>";
+				echo "Hello, ";
+				if($_COOKIE['user']!="") {
+					echo $_COOKIE['user'].". <a href=\"logout.php\">Logout</a>";
+					echo "<a href=\"lib.php\"><p>Your Library</p></a>";
+				} else {
+					echo "Guest. ";
+					echo "<a href=\"login.html\">Login Here!</a>";
+					echo "<p align=\"right\"><a href=\"register.html\">Sign Up!</a></p>";
+				}
+				?>
 			</div>
 			<div class="floatCenter">
-				<h1><a href="tapster.html" style="TEXT-DECORATION: NONE">Tapster</a></h1>
+				<h1><a href="tapster.php" style="TEXT-DECORATION: NONE">Tapster</a></h1>
 				<h2>Beer Library and Search</h2>
 			</div>
 			<br></br>
@@ -62,6 +74,33 @@
 				echo "<p>Name: ".$item['name']."</p>";
 				echo "<p>Brewery: ".$item['brewery']['name']."</p>";
 				echo "<p>ABV%: ".$item['abv']."</p>";
+				if($_COOKIE['user']!="") {
+					$hostname = 'localhost';
+					$dbuser = 'root';
+					$dbpass = '';
+					$db = 'tapster';
+					
+					$dbhandle = MYSQL_CONNECT($hostname, $dbuser, $dbpass)or die("Unable to connect to mysql");
+					$selected = mysql_select_db($db, $dbhandle)or die("Unable to connect to database");
+					
+					$table = $_COOKIE['user']."_lib";
+					$query = "select beer from ".$table." where beer=\"".$var."\"";
+					$return = mysql_query($query);
+					$flag = TRUE;
+					while($row = mysql_fetch_array($return)) {
+						$extant = $row{'beer'};
+						echo $extant;
+						if($var == $extant) { 
+							echo "<a href=\"remove.php?v=".$extant."\"><p>Remove from Library</p></a>";
+							$flag = FALSE;
+							break;
+						}
+					}
+					if($flag) {
+						echo "<a href=\"add.php?v=".$item['name']."\"><p>Add to Library</p></a>";
+					}
+					
+				}
 				echo "<br></br>";
 				echo $item['description'];
 				?>
