@@ -57,7 +57,6 @@
 				}
 				?>
 			</div>
-                        </div>
 
 			<div class="floatCenter">
 				<h1><a href="tapster.php" style="TEXT-DECORATION: NONE">Tapster</a></h1>
@@ -89,16 +88,13 @@
 				}
 				mysql_close($dbhandle);	
 				?>
+         		        <div class="floatCenter">
+                                   <form action="randombeer.php" method="get">
+                                   <input type="submit" value="Suggest Beer">
+                                   <br></br>
+                                </form>
 			<br></br>
 			</div>
-                        </div>
-			<div class="floatLeft">
-                            <form action="randombeer.php" method="get">
-                                 <input type="submit" value="Suggest Beer">
-                            <br></br>
-                        </form>
-                        </div>
-
 			<div class="divider">
 				<footer>
 				
