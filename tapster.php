@@ -58,6 +58,12 @@
 				<br></br>
 				</form>
 			</div>
+			<div class="floatLeft">
+				<form action="randombeer.php" method="get">
+					<input type="submit" value="Random Beer"> 
+				<br></br>
+				</form>
+			</div>
 			<div class="floatRight">
 				<?php 
 				echo "<br>";
