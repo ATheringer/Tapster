@@ -66,17 +66,12 @@
                         <br></br>
                         <div id="php_and_json">
                                 <?php
-				$min = 0;
-				$max = 50;
-				$ranID = rand($min, $max);
-                               	
                                 $url = "http://api.openbeerdatabase.com/v1/beers.json?query=";
-                                $json = file_get_contents($url);
+				$json = file_get_contents($url);
                                 $data = json_decode($json, TRUE);
-					
-                                $item = $data['total'][0];
-				echo 'works';
-				echo $item;
+			
+			        $totalNumOfBeers = count($data['beers']);
+				$ranID = rand(0, $totalNumOfBeers);
                                 $item = $data['beers'][$ranID];
 
                                 echo "<p>Name: ".$item['name']."</p>";
