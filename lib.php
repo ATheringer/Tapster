@@ -57,6 +57,8 @@
 				}
 				?>
 			</div>
+                        </div>
+
 			<div class="floatCenter">
 				<h1><a href="tapster.php" style="TEXT-DECORATION: NONE">Tapster</a></h1>
 				<h2>Beer Library and Search</h2>
@@ -89,6 +91,14 @@
 				?>
 			<br></br>
 			</div>
+                        </div>
+			<div class="floatLeft">
+                            <form action="randombeer.php" method="get">
+                                 <input type="submit" value="Suggest Beer">
+                            <br></br>
+                        </form>
+                        </div>
+
 			<div class="divider">
 				<footer>
 				
