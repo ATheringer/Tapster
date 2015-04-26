@@ -40,6 +40,29 @@ INSERT INTO `beerman_lib` VALUES (1,'Red Ale'),(3,'Fireside Chat');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dereck_lib`
+--
+
+DROP TABLE IF EXISTS `dereck_lib`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dereck_lib` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `beer` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dereck_lib`
+--
+
+LOCK TABLES `dereck_lib` WRITE;
+/*!40000 ALTER TABLE `dereck_lib` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dereck_lib` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ericd_lib`
 --
 
@@ -97,7 +120,7 @@ CREATE TABLE `kyle_lib` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `beer` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +129,32 @@ CREATE TABLE `kyle_lib` (
 
 LOCK TABLES `kyle_lib` WRITE;
 /*!40000 ALTER TABLE `kyle_lib` DISABLE KEYS */;
+INSERT INTO `kyle_lib` VALUES (1,'Grand Cru'),(2,'Jockamo');
 /*!40000 ALTER TABLE `kyle_lib` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `passphrase`
+--
+
+DROP TABLE IF EXISTS `passphrase`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `passphrase` (
+  `id` varchar(100) NOT NULL,
+  `question` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `passphrase`
+--
+
+LOCK TABLES `passphrase` WRITE;
+/*!40000 ALTER TABLE `passphrase` DISABLE KEYS */;
+INSERT INTO `passphrase` VALUES ('A','What is your mother\'s maiden name?'),('B','what is the name of your elementary school?'),('C','what is your father\'s middle name?'),('D','what is the name of your first pet?'),('E','what is the name of the street you grew up on?');
+/*!40000 ALTER TABLE `passphrase` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -147,7 +195,7 @@ CREATE TABLE `tap_users` (
   `security_question` varchar(100) NOT NULL,
   `security_passphrase` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +204,7 @@ CREATE TABLE `tap_users` (
 
 LOCK TABLES `tap_users` WRITE;
 /*!40000 ALTER TABLE `tap_users` DISABLE KEYS */;
-INSERT INTO `tap_users` VALUES (1,'beerman','214ebc26481ad573e71582661472444a','beerman_lib','',''),(2,'tseliot','e3a70eb6b69833b6abb578bd5e314c06','tseliot_lib','',''),(7,'thedude','dcd57558c87a690ae5fcb8930d55950a','thedude_lib','',''),(8,'ericd','fcea920f7412b5da7be0cf42b8c93759','ericd_lib','',''),(19,'tt','accc9105df5383111407fd5b41255e23','tt_lib','C','accc9105df5383111407fd5b41255e23');
+INSERT INTO `tap_users` VALUES (1,'beerman','214ebc26481ad573e71582661472444a','beerman_lib','',''),(2,'tseliot','e3a70eb6b69833b6abb578bd5e314c06','tseliot_lib','',''),(7,'thedude','dcd57558c87a690ae5fcb8930d55950a','thedude_lib','',''),(8,'ericd','fcea920f7412b5da7be0cf42b8c93759','ericd_lib','',''),(20,'dereck','590b659f79aad9e9c48852cbb73c41c1','dereck_lib','E','bd300206cda660bed8dbeabaa901e622'),(23,'kyle','4b75751e170e00f56886726c3f46eecd','kyle_lib','A','4b75751e170e00f56886726c3f46eecd');
 /*!40000 ALTER TABLE `tap_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,6 +301,29 @@ LOCK TABLES `vnath_lib` WRITE;
 /*!40000 ALTER TABLE `vnath_lib` DISABLE KEYS */;
 /*!40000 ALTER TABLE `vnath_lib` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `y_lib`
+--
+
+DROP TABLE IF EXISTS `y_lib`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `y_lib` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `beer` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `y_lib`
+--
+
+LOCK TABLES `y_lib` WRITE;
+/*!40000 ALTER TABLE `y_lib` DISABLE KEYS */;
+/*!40000 ALTER TABLE `y_lib` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -263,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-17  3:03:28
+-- Dump completed on 2015-04-26  2:12:31
