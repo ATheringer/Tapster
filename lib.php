@@ -97,7 +97,7 @@
 			</div>
 			<div class="divider">
 				<footer>
-				
+					<br></br>				
 					&copy; 2015 Tapster
 				</footer>
 			</div>

@@ -66,7 +66,7 @@
 			<div id="php_and_json">
 				<?php 
 				$rawterms = htmlspecialchars($_GET['beer']);
-				if (strlen( $rawterms) < 2) {
+				if (strlen( $rawterms) == 1) {
 					echo "<br></br>";
 					echo 'You searched: '.$rawterms;
 					echo '<br></br>';
@@ -102,7 +102,7 @@
 			</div>
 			<div class="divider">
 				<footer>
-				
+					<br></br>				
 					&copy; 2015 Tapster
 				</footer>
 			</div>

@@ -8,11 +8,10 @@
 	</style>
 	<form action="checkreg.php" method=post>
 		<p>Username: <input type="text" name="user" /></p>
-		<p>Password: <input type="text" name="pass" /></p>
-      		<p>Confirm Password: <input type="type" name="pass2" /></p>
-		<p>
+		<p>Password: <input type="password" name="pass" /></p>
+      		<p>Confirm Password: <input type="password" name="pass2" /></p>
+		<p>Choose a security question <br>
 			<select name="question">
-  			<option value="">Security Question</option>
   			<option value="A">what is your mother's maiden name?</option>
   			<option value="B">what is the name of your elementary school?</option>
   			<option value="C">what is your father's middle name?</option>
@@ -20,6 +19,6 @@
   			<option value="E">what is the name of the street you grew up on?</option>
 			</select>
 		</p>
-		<p>Answer: <input type="answer" name="phrase" /></p>
+		<p>Answer: <input type="password" name="phrase" /></p>
 	<input type="submit" value="Register" />
 </html>

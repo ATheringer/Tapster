@@ -41,7 +41,7 @@
 			echo "It seems that ".$beer." is not in your library. <a href=\"lib.php\"> Your Library </a>";
 		}
 	} else {
-		echo "It looks like you're not logged in. <a href=\"login.php\">Login.</a>";
+		echo "It looks like you're not logged in. <a href=\"login.html\">Login.</a>";
 	}
 	mysql_close($dbhandle);	
 	?>

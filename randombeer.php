@@ -71,7 +71,7 @@
                                 $data = json_decode($json, TRUE);
 			
 			        $totalNumOfBeers = count($data['beers']);
-				$ranID = rand(0, $totalNumOfBeers);
+				$ranID = rand(0, $totalNumOfBeers-1);
                                 $item = $data['beers'][$ranID];
 
                                 echo "<p>Name: ".$item['name']."</p>";
@@ -107,11 +107,19 @@
                                 echo "<br></br>";
                                 echo $item['description'];
                                 ?>
+				<br></br>
+
+				<form action="randombeer.php" method="get">
+					<input type="submit" value="Another round!">
+				<br></br>
+				</form>
+
+
                         <br></br>
                         </div>
                         <div class="divider">
                                 <footer>
-
+					<br></br>
                                         &copy; 2015 Tapster
                                 </footer>
                         </div>
