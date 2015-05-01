@@ -14,7 +14,7 @@
 		setcookie('hval', '', time() - 3600); 
 		echo "Logged out successfully! <a href=\"tapster.php\">Return</a>";
 	} else {
-		echo "You weren't logged in initially. <a href=\"login.php\">Login.</a>";
+		echo "You weren't logged in initially. <a href=\"login.html\">Login.</a>";
 	}
 	?>
 </html>

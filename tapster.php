@@ -54,7 +54,13 @@
 			<br></br>
 			<div class="floatLeft">
 				<form action="search.php" method="get">
-					Enter your search term here: <input type="text" name="beer" /><input type="submit" />
+					Enter your search term here: <input type="text" name="beer" /><input type="submit" value = "search" />
+				<br></br>
+				</form>
+			</div>
+			<div class="floatLeft">
+				<form action="randombeer.php" method="get">
+					<input type="submit" value="Random Beer"> 
 				<br></br>
 				</form>
 			</div>
@@ -87,7 +93,7 @@
 			</div>
 			<div class="divider">
 				<footer>
-				
+					<br></br>				
 					&copy; 2015 Tapster
 				</footer>
 			</div>

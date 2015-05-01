@@ -9,13 +9,21 @@
 <?php
 $user = htmlspecialchars($_POST['user']);
 $pass = htmlspecialchars($_POST['pass']);
+$pass2 = htmlspecialchars($_POST['pass2']);
+$question = htmlspecialchars($_POST['question']);
+$passphrase = htmlspecialchars($_POST['phrase']);
 
 if(!$user) {
-	echo "You must enter a username.<br> <a href=\"register.html\">Return</a>";
+	echo "You must enter a username.<br> <a href=\"register.html\">Try again.</a>";
 }else if(!$pass) {
-	echo "You must enter a password <br> <a href=\"register.html\">Return</a>";
+	echo "You must enter a password <br> <a href=\"register.html\">Try again.</a>";
+} else if($pass != $pass2) {
+        echo "Oops! Password did not match! <br> <a href=\"register.html\">Try again.</a>";
+} else if(!$passphrase) {
+	echo "You must enter an answer to your security question.<br> <a href=\"register.html\">Try again.</a>";
 } else {
 	$pass = hash('md5', $pass);
+	$passphrase = hash('md5', $passphrase);
 	$hostname = 'localhost';
 	$dbuser = 'root';
 	$dbpass = '';
@@ -47,6 +55,12 @@ if(!$user) {
 		if($reg) {
 			$command = "create table ".$user."_lib (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, beer VARCHAR(100))";
 			mysql_query($command);
+			
+			$command = "update ".$table." set security_question=\"".$question."\" where name=\"".$user."\"";
+			mysql_query($command);
+			$command = "update ".$table." set security_passphrase=\"".$passphrase."\" where name=\"".$user."\"";
+			mysql_query($command);
+
 			$command = "update ".$table." set library=\"".$user."_lib\" where name=\"".$user."\"";
 			mysql_query($command);
 			echo "Registration successful! <br> <a href=\"login.html\">Login Here</a>";

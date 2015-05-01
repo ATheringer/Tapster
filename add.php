@@ -42,7 +42,7 @@
 			}
 		}
 	} else {
-		echo "It looks like you're not logged in. <a href=\"login.php\">Login.</a>";
+		echo "It looks like you're not logged in. <a href=\"login.html\">Login.</a>";
 	}
 	mysql_close($dbhandle);	
 	?>

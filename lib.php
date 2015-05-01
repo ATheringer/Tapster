@@ -57,6 +57,7 @@
 				}
 				?>
 			</div>
+
 			<div class="floatCenter">
 				<h1><a href="tapster.php" style="TEXT-DECORATION: NONE">Tapster</a></h1>
 				<h2>Beer Library and Search</h2>
@@ -87,11 +88,16 @@
 				}
 				mysql_close($dbhandle);	
 				?>
+         		        <div class="floatCenter">
+                                   <form action="randombeer.php" method="get">
+                                   <input type="submit" value="Suggest Beer">
+                                   <br></br>
+                                </form>
 			<br></br>
 			</div>
 			<div class="divider">
 				<footer>
-				
+					<br></br>				
 					&copy; 2015 Tapster
 				</footer>
 			</div>
